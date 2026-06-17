@@ -232,7 +232,12 @@ Para acesso ao Bot, envie ao administrador:
             # 📍 MAPA
             lat, lon = buscar_coordenadas(instalacao)
 
-            if lat and lon:
+            if lat is None or lon is None:
+                bot.send_message(
+                    message.chat.id,
+                    "⚠️ Sem dados de localização para esta instalação."
+                )
+            else:
                 bot.send_message(
                     message.chat.id,
                     f"📍 https://www.google.com/maps?q={lat},{lon}"
