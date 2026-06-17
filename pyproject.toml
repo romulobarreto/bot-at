@@ -1,0 +1,35 @@
+[project]
+name = "bot-at"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = "^3.12,<4.0"
+dependencies = [
+    "taskipy (>=1.14.1,<2.0.0)",
+    "blue (>=0.9.1,<0.10.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "pydocstyle (>=6.3.0,<7.0.0)",
+    "pytest (>=9.0.3,<10.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "pytelegrambotapi (>=4.34.0,<5.0.0)",
+    "pandas (>=3.0.3,<4.0.0)",
+    "matplotlib (>=3.10.9,<4.0.0)",
+    "requests (>=2.34.2,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+conect = "poetry run python tests/test_connection.py"
+format = "isort . && blue . && pydocstyle ."
+test = "pytest -v"
+run = "poetry run python src/main.py"
+create_user = "poetry run python src/db/create_user.py"
