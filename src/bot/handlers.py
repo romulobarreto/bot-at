@@ -121,7 +121,7 @@ Para acesso ao Bot, envie ao administrador:
         usuario = buscar_usuario(telegram_id)
 
         if not usuario or usuario["administrador"] == 0:
-            bot.send_message(message.chat.id, "❌ Sem permissão.")
+            bot.send_message(message.chat.id, "❌ Sem permissão.\n\nUse /start para solicitar acesso.")
             return
 
         contexto_usuario[message.chat.id] = "CADASTRO"
@@ -175,7 +175,7 @@ Para acesso ao Bot, envie ao administrador:
         usuario = buscar_usuario(telegram_id)
 
         if usuario is None or usuario["autorizado"] == 0:
-            bot.send_message(message.chat.id, "❌ Sem permissão.")
+            bot.send_message(message.chat.id, "❌ Sem permissão.\n\nUse /start para solicitar acesso.")
             return
 
         try:
